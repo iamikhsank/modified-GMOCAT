@@ -13,7 +13,7 @@ from util import tensor_to_numpy
 
 class ActorCritic(nn.Module):
     def __init__(self,  args, local_map):
-        self.device = torch.device('cpu')
+        self.device = torch.device(args.device) # Use device from args
         self.args = args
         self.know_num = args.know_num
         self.item_num = args.item_num
@@ -152,7 +152,7 @@ class GCAT:
         self.betas = (0.9,0.999)
         self.morl_weights = args.morl_weights
 
-        self.device = torch.device('cpu')
+        self.device = torch.device(args.device) # Use device from args
         self.eps_clip = 0.2
 
         self.policy = ActorCritic(args, local_map).to(self.device)
@@ -243,7 +243,7 @@ class GCAT:
     @classmethod
     def create_model(cls, config, local_map):
         model = cls(config, local_map)
-        # device = torch.device('cpu')
+        # device = torch.device('cuda')
         return model
         
 # GAT layer
@@ -276,7 +276,7 @@ class GraphLayer(nn.Module):
 
 class Fusion(nn.Module):
     def __init__(self, args, local_map):
-        self.device = torch.device('cpu')
+        self.device = torch.device(args.device) # Use device from args
         self.know_num = args.know_num
         self.item_num = args.item_num
         self.emb_dim = args.emb_dim

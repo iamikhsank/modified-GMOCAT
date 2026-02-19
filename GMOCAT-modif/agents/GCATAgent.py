@@ -37,7 +37,7 @@ class GCATAgent(object):
         self.fa = fa
         self.args = args
         self.target_concepts = args.target_concepts
-        self.device = torch.device('cpu')
+        self.device = torch.device(args.device) # Use device from args
         
         self.memory = Memory()
         self.logger = logging.getLogger(f'{args.FA}')

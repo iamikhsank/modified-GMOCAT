@@ -22,7 +22,7 @@ class Env(object):
         self.T = args.T
         self.data_name = args.data_name
         self.CDM = args.CDM
-        self.device = torch.device('cpu')
+        self.device = torch.device(args.device) # Use device from args
         self.seed = args.seed # for split train/test, sup/query
 
         self.rates = {}

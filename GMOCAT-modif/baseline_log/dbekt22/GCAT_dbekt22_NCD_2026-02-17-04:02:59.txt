@@ -1,0 +1,4 @@
+2026-02-17 04:02:59,984 - Training Model: GCATAgent_GCAT_20
+2026-02-17 04:03:00,548 - train/val/test size: 793, 99,99
+2026-02-17 04:03:00,683 - models/dbekt22/NCD_dbekt22_20.pt
+2026-02-17 04:03:00,684 - Hype-Parameters: Namespace(seed=145, environment='GCATEnv', data_path='./data/', data_name='dbekt22', agent='GCATAgent', FA='GCAT', CDM='NCD', T=20, ST=[20], gpu_no='0', device='cpu', learning_rate=0.001, training_epoch=1, cdm_lr=0.02, cdm_epoch=1, cdm_bs=32, train_bs=4, test_bs=4, batch=128, gamma=0.5, latent_factor=256, n_block=1, graph_block=1, n_head=1, dropout_rate=0.1, policy_epoch=1, morl_weights=[1, 1, 1], emb_dim=128, use_graph=True, use_attention=True, store_action=False, student_ids=[0], target_concepts=[0], model='GCATAgent_GCAT_20', user_num=991, item_num=213, know_num=93)

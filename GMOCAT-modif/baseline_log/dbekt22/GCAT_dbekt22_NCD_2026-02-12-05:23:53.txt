@@ -2,3 +2,50 @@
 2026-02-12 05:23:53,516 - train/val/test size: 793, 99,99
 2026-02-12 05:23:53,660 - models/dbekt22/NCD_dbekt22_20.pt
 2026-02-12 05:23:53,661 - Hype-Parameters: Namespace(seed=145, environment='GCATEnv', data_path='./data/', data_name='dbekt22', agent='GCATAgent', FA='GCAT', CDM='NCD', T=20, ST=[20], gpu_no='0', learning_rate=0.001, training_epoch=1, cdm_lr=0.02, cdm_epoch=1, cdm_bs=32, train_bs=4, test_bs=4, batch=128, gamma=0.5, latent_factor=256, n_block=1, graph_block=1, n_head=1, dropout_rate=0.1, policy_epoch=1, morl_weights=[1, 1, 1], emb_dim=128, use_graph=True, use_attention=True, store_action=False, student_ids=[0], target_concepts=[0], model='GCATAgent_GCAT_20', user_num=991, item_num=213, know_num=93)
+2026-02-12 06:04:16,109 - policy loss: 1.3739
+2026-02-12 06:04:16,118 - epoch: 0, flag: training
+2026-02-12 12:02:55,805 - epoch: 0, flag: evaluation
+2026-02-12 12:04:03,574 - epoch: 0, flag: evaluation
+2026-02-12 12:05:04,515 - epoch: 0, flag: evaluation
+2026-02-12 12:05:04,519 - Mean Metrics:
+2026-02-12 12:05:04,523 - 20AUC: 0.7676, ACC: 0.7832
+2026-02-12 12:05:04,523 - 20AUC: 0.7648456934686443,0.7659063804412641,0.772183269113343, ACC: 0.7838190517616355,0.7781644193127447,0.7877337973031753
+2026-02-12 12:05:04,524 - Best Mean Metrics:
+2026-02-12 12:05:04,524 - 20AUC: 0.7676, ACC: 0.7832
+2026-02-12 12:05:04,573 - 0.0493
+0.0985
+0.1428
+0.182
+0.2196
+0.2533
+0.2857
+0.3165
+0.3461
+0.3736
+0.3993
+0.4201
+0.4412
+0.4546
+0.4717
+0.4833
+0.5011
+0.5192
+0.5345
+0.5445
+0.5625
+0.5799
+0.5976
+0.6147
+0.6318
+0.6399
+0.6541
+0.6605
+0.6657
+0.6762
+0.6912
+0.7007
+0.7127
+0.7256
+0.7334
+0.7441
+0.7567

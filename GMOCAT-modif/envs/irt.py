@@ -42,7 +42,7 @@ class IRTModel:
     def __init__(self, args, num_students, num_questions, num_dim):
         super().__init__()
         self.args = args
-        self.device = torch.device('cuda')
+        self.device = torch.device(args.device)
         self.model = IRT(num_students, num_questions, num_dim).to(self.device)
     
     @property
@@ -173,7 +173,7 @@ class IRTModel:
         torch.save(model_dict, path)
 
     def adaptest_load(self, path):
-        self.model.load_state_dict(torch.load(path), strict=False)
+        self.model.load_state_dict(torch.load(path, map_location=self.device), strict=False)
         self.model.to(self.device)
 
     def get_pred(self, user_ids, avail_questions, concept_map):
@@ -341,5 +341,3 @@ class IRTModel:
         return pred * torch.norm(pos_weights - original_weights).item() + \
                (1 - pred) * torch.norm(neg_weights - original_weights).item()
         
-
-

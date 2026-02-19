@@ -1,48 +1,30 @@
 import numpy as np
-import inspect
-import random
-import os
 import torch
+import random
+import logging
+import argparse
 
-def check_path(file_path):
-    if not os.path.exists(file_path):
-        os.makedirs(file_path)
-
-def arg_parser():
-    """
-    Create an empty argparse.ArgumentParser.
-    """
-    import argparse
-    return argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-
-def get_objects(name_space):
-    res = {}
-    for name, obj in inspect.getmembers(name_space):
-        if inspect.isclass(obj):
-            res[name] = obj
-    return res
+def get_objects(modules):
+    objects = {}
+    for name in dir(modules):
+        obj = getattr(modules, name)
+        if isinstance(obj, type):
+            objects[name] = obj
+    return objects
 
 def set_global_seeds(i):
     np.random.seed(i)
     random.seed(i)
-    torch.manual_seed(i) # cpu
-    torch.cuda.manual_seed(i)  # gpu
-    torch.backends.cudnn.deterministic=True # cudnn
+    torch.manual_seed(i)
+    # torch.cuda.manual_seed(i) # Removed to support CPU-only environments
 
-def softmax(x):
-    z = x - max(x)
-    numerator = np.exp(z)
-    denominator = np.sum(numerator)
-    softmax = numerator / denominator
-    return softmax
+def arg_parser():
+    parser = argparse.ArgumentParser()
+    return parser
 
-def path_join(a,b):
-    return os.path.join(a,b)
+def check_path(path):
+    if not os.path.exists(path):
+        os.makedirs(path)
 
 def tensor_to_numpy(tensor):
-    if isinstance(tensor, torch.Tensor):
-        return tensor.cpu().detach().numpy()
-    else:
-        return tensor
-
-save4float = lambda x:str(round(x,4))
+    return tensor.detach().cpu().numpy()

@@ -4,6 +4,7 @@ import time
 import logging
 import numpy as np
 import dgl
+import torch
 from datetime import datetime
 
 import envs as all_envs
@@ -33,6 +34,7 @@ def common_arg_parser():
     parser.add_argument('-T', type=int, default=3, help="time_step")
     parser.add_argument('-ST', type=eval, default="[10,30,60,120]", help="evaluation_time_step")
     parser.add_argument('-gpu_no', type=str, default="0", help='which gpu for usage')
+    parser.add_argument('-device', type=str, default='cpu', help='device to run on: cpu or cuda')
     
     parser.add_argument('-learning_rate', type=float, default=0.01, help="learning rate")
     parser.add_argument('-training_epoch', type=int, default=30000, help="training epoch")
@@ -105,6 +107,11 @@ def main(args):
     arg_parser = common_arg_parser()
     args, unknown_args = arg_parser.parse_known_args(args)
     
+    # Auto-detect device if not specified or available
+    if args.device == 'cuda' and not torch.cuda.is_available():
+        print("Warning: CUDA requested but not available. Falling back to CPU.")
+        args.device = 'cpu'
+
     args.model = "_".join([args.agent, args.FA, str(args.T)])
     # initialization
     set_global_seeds(args.seed)
@@ -115,6 +122,9 @@ def main(args):
     logger.setLevel(logging.INFO)
     formatter = logging.Formatter('%(asctime)s - %(message)s')
   
+    if not os.path.exists(f'./baseline_log/{args.data_name}/'):
+        os.makedirs(f'./baseline_log/{args.data_name}/')
+
     file_handler = logging.FileHandler(f'./baseline_log/{args.data_name}/{args.FA}_{args.data_name}_{args.CDM}_' + time.strftime('%Y-%m-%d-%H:%M:%S',time.localtime(time.time())) + '.txt')
     file_handler.setLevel(logging.INFO)
     file_handler.setFormatter(formatter)

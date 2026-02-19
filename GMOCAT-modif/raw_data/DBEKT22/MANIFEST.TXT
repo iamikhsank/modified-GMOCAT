@@ -1,0 +1,4 @@
+1_DBE_KT22_file_descriptions_100102.xlsx (application/vnd.openxmlformats-officedocument.spreadsheetml.sheet) 10458 bytes.
+2_DBE_KT22_Practice_Sequences_100102_json.zip (application/zip) 625548 bytes.
+2_DBE_KT22_datafiles_100102_csv.zip (application/zip) 2721804 bytes.
+1_Script_to_generate_sequences_100102_py.zip (application/zip) 1908 bytes.
